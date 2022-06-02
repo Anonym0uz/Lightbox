@@ -1,18 +1,17 @@
 import UIKit
-import SDWebImage
 
-protocol PageViewDelegate: AnyObject {
+protocol PageViewDelegate: class {
 
   func pageViewDidZoom(_ pageView: PageView)
-  func remoteImageDidLoad(_ image: UIImage?, imageView: SDAnimatedImageView)
+  func remoteImageDidLoad(_ image: UIImage?, imageView: UIImageView)
   func pageView(_ pageView: PageView, didTouchPlayButton videoURL: URL)
   func pageViewDidTouch(_ pageView: PageView)
 }
 
 class PageView: UIScrollView {
 
-  lazy var imageView: SDAnimatedImageView = {
-    let imageView = SDAnimatedImageView()
+  lazy var imageView: UIImageView = {
+    let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFit
     imageView.clipsToBounds = true
     imageView.isUserInteractionEnabled = true
